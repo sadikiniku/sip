@@ -51,6 +51,7 @@ class User extends CI_Controller
     {
         $data['user'] = $this->authdatatable->auth($this->session->userdata('nip'));
         $data['jobavailable'] = $this->datatable->jobavailable();
+        $data['jobDeadline'] = $this->datatable->
 
         $data['title'] = 'Dashboard';
         $this->load->view('template/header', $data);
@@ -119,6 +120,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('job', 'Job', 'required');
         $this->form_validation->set_rules('_deadline', 'Deadline', 'required');
         $this->form_validation->set_rules('info', 'Info', 'required');
+        $data['userList'] = $this->datatable->user();
 
         if ($this->form_validation->run() == false) {
             $data['inputjob'] = $this->datatable->jobavailable();
@@ -135,7 +137,8 @@ class User extends CI_Controller
                 'date_created' => date('d-m-Y'),
                 'deadline' => $this->input->post('_deadline'),
                 'info' => $this->input->post('info'),
-                'nip' => $data['user']['nip']
+                'nip' => $data['user']['nip'],
+                'employe' => $this->input->post('employee')
             ];
             $this->db->insert('tbl_job_available', $data);
             redirect('User/inputjob');

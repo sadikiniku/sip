@@ -63,10 +63,10 @@
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <h6 class="collapse-header">opsi:</h6>
+                                <a class="collapse-item" href="<?= base_url('User/myjob'); ?>">Tugas Saya</a>
                                 <?php if ($user['role_id'] != '1') : ?>
-                                    <a class="collapse-item" href="<?= base_url('User/myjob'); ?>">Tugas Saya</a>
+                                    <a class="collapse-item" href="<?= base_url('User/inputjob'); ?>">Tambakan Tugas</a>
                                 <?php endif; ?>
-                                <a class="collapse-item" href="<?= base_url('User/inputjob'); ?>">Tambakan Tugas</a>
                                 <?php if ($user['role_id'] != '4') : ?>
                                     <a class="collapse-item" href="<?= base_url('User/jobprogress'); ?>">Progres Tugas</a>
                                 <?php endif; ?>

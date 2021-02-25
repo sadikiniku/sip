@@ -69,4 +69,7 @@ class datatable extends CI_Model
         $this->db->where('id_job', $id);
         $this->db->update('tbl_job_available', $data);
     }
+//    public function getDeadlineJobByUser(){
+//        $this->db->where()
+//    }
 }

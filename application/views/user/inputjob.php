@@ -73,6 +73,15 @@
                         <label>Keterangan</label>
                         <input type="text" class="form-control" id="info" name="info" placeholder="Enter Keterangan"></input>
                     </div>
+                    <div class="form-group">
+                        <label>Assign Ke</label>
+                        <select name="employee" class="form-control">
+                            <option></option>
+                            <?php foreach ($userList as $ul) : ?>
+                                <option value="<?php echo $ul['nip'] ?>"><?php echo $ul['name'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
 
                 </div>
                 <div class="modal-footer">
@@ -111,7 +120,15 @@
                             <label>Keterangan</label>
                             <input type="text" class="form-control" id="info" name="info" value="<?= $sm['info']; ?>"></input>
                         </div>
-
+                        <div class="form-group">
+                            <label>Assign Ke</label>
+                            <select name="employee" class="form-control">
+                                <option></option>
+                                <?php foreach ($userList as $ul) : ?>
+                                    <option value="<?php echo $ul['nip'] ?>" <?php echo $sm['employe'] == $ul['nip'] ? 'selected' : '' ?>><?php echo $ul['name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

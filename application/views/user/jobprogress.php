@@ -16,7 +16,7 @@
                         <th>Pekerja</th>
                         <th>Batas Waktu</th>
                         <th>Pencapaian (%)</th>
-                        <th>Status</th>
+<!--                        <th>Status</th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -30,14 +30,13 @@
                                 </td>
                                 <td><?= $sm['name']; ?></td>
                                 <td><?= $sm['deadline']; ?></td>
-                                <td><?= $sm['progress']; ?> %</td>
                                 <td>
                                     <?php if ($sm['status'] == 0) : ?>
-                                        <a href="" class="badge badge-primary">proses</a>
+                                        <a href="" class="badge badge-primary"> <?= $sm['progress']; ?> %</a>
                                     <?php elseif ($sm['status'] == 1) : ?>
-                                        <a href="" class="badge badge-warning">tunda</a>
+                                        <a href="" class="badge badge-warning"> <?= $sm['progress']; ?> %</a>
                                     <?php elseif ($sm['status'] == 2) : ?>
-                                        <a href="" class="badge badge-success">selesai</a>
+                                        <a href="" class="badge badge-success"> <?= $sm['progress']; ?> %</a>
                                     <?php endif; ?>
                                 </td>
                             </tr>
