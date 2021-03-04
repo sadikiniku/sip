@@ -28,7 +28,16 @@
                                 <td><?= $sm['name']; ?></td>
                                 <td><?= $sm['deadline']; ?></td>
                                 <td>
-                                    <a type="button" class="btn badge-secondary btn-sm col-md-5" data-toggle="modal" data-target="#editmodal<?= $sm['id_job']; ?>"><?= $sm['progress']; ?> %</a>
+                                    <div role="button" class="col-md-12" data-toggle="modal" data-target="#editmodal<?= $sm['id_job']; ?>">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated
+                                                        <?php if($sm['progress'] < 100 && $sm['progress'] > 75) echo 'bg-warning' ?>
+                                                        <?php if($sm['progress'] < 75 && $sm['progress'] > 50) echo 'bg-info' ?>
+                                                        <?php if($sm['progress'] < 25 && $sm['progress'] > 0) echo 'bg-danger' ?>
+                                                        <?php if($sm['progress'] == 100 ) echo 'bg-success' ?>
+                                                        " role="progressbar" style="width: <?php echo $sm['progress']?>%" aria-valuenow="<?php echo $sm['progress'] ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $sm['progress'] ?>%</div>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td>
                                     <?php if ($sm['status'] == 0) : ?>
@@ -75,7 +84,7 @@
 
 
 <?php foreach ($jobavailable as $sm) : ?>
-    <div class="modal fade" id="editmodal<?= $sm['id_job']; ?>" tabindex="-1" role="dialog" aria-labelledby="editmodalLabel" aria-hidden="true">
+    <div class="modal fade js-form-tugas" id="editmodal<?= $sm['id_job']; ?>" tabindex="-1" role="dialog" aria-labelledby="editmodalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -88,8 +97,9 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Pencapaian (%)</label>
-                            <input type="text" class="form-control" id="progress" name="progress" value="<?= $sm['progress']; ?>">
+                            <label>Pencapaian : <span class="js-progress-percent"><?= $sm['progress']; ?></span> %</label>
+                            <input type="range" class="form-control-range js-input-progress" id="progress" min="0" max="100" name="progress" value="<?= $sm['progress']; ?>">
+<!--                            <input id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>-->
                         </div>
 
                     </div>
@@ -102,3 +112,6 @@
         </div>
     </div>
 <?php endforeach; ?>
+
+
+

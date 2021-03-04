@@ -32,11 +32,20 @@
                                 <td><?= $sm['deadline']; ?></td>
                                 <td>
                                     <?php if ($sm['status'] == 0) : ?>
-                                        <a href="" class="badge badge-primary"> <?= $sm['progress']; ?> %</a>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-animated bg-primary" role="progressbar" style="width: <?php echo $sm['progress']?>%" aria-valuenow="<?php echo $sm['progress'] ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $sm['progress'] ?>%</div>
+                                        </div>
+<!--                                        <a href="" class="badge badge-primary"> --><?//= $sm['progress']; ?><!-- %</a>-->
                                     <?php elseif ($sm['status'] == 1) : ?>
-                                        <a href="" class="badge badge-warning"> <?= $sm['progress']; ?> %</a>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-animated bg-warning" role="progressbar" style="width: <?php echo $sm['progress']?>%" aria-valuenow="<?php echo $sm['progress'] ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $sm['progress'] ?>%</div>
+                                        </div>
+<!--                                        <a href="" class="badge badge-warning"> --><?//= $sm['progress']; ?><!-- %</a>-->
                                     <?php elseif ($sm['status'] == 2) : ?>
-                                        <a href="" class="badge badge-success"> <?= $sm['progress']; ?> %</a>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-animated bg-success" role="progressbar" style="width: <?php echo $sm['progress']?>%" aria-valuenow="<?php echo $sm['progress'] ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $sm['progress'] ?>%</div>
+                                        </div>
+<!--                                        <a href="" class="badge badge-success"> --><?//= $sm['progress']; ?><!-- %</a>-->
                                     <?php endif; ?>
                                 </td>
                             </tr>

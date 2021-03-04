@@ -63,6 +63,8 @@
 
 <script src="<?= base_url('assets/'); ?>dist/js/bootstrap-datepicker.js"></script>
 
+<script src="<?=base_url('assets/'); ?>js/admin.js"></script>
+
 <script type="text/javascript">
     $(function() {
         $("#_deadline").datepicker({
