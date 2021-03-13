@@ -74,29 +74,5 @@
                         </div>
                     </li>
 
-                    <?php if ($title == 'Job Available') : ?>
-                        <li class="nav-item active">
-                        <?php else : ?>
-                        <li class="nav-item">
-                        <?php endif; ?>
-                        <a class="nav-link" href="<?= base_url('User/jobavailable'); ?>">
-                            <i class="fas fa-fw fa-business-time"></i>
-                            <span>Tugas Tersedia</span></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-fw fa-exclamation-circle"></i>
-                                <span>Saran dan Tindak Lanjut</span></a>
-                        </li>
-
-                        <!-- Divider -->
-                        <hr class="sidebar-divider d-none d-md-block">
-
-                        <!-- Sidebar Toggler (Sidebar) -->
-                        <div class="text-center d-none d-md-inline">
-                            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                        </div>
-
         </ul>
         <!-- End of Sidebar -->
