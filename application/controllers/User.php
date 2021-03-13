@@ -163,10 +163,10 @@ class User extends CI_Controller
             date_default_timezone_set('Asia/Makassar');
             $data = [
                 'job' => $this->input->post('job'),
-                'date_created' => date('d-m-Y'),
                 'deadline' => $this->input->post('__deadline'),
                 'info' => $this->input->post('info'),
-                'nip' => $data['user']['nip']
+                'nip' => $data['user']['nip'],
+                'employe' => $this->input->post('employee')
             ];
             $this->datatable->updatejob($id, $data);
             redirect('User/inputjob');
