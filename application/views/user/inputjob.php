@@ -2,7 +2,7 @@
 <h1 class="h3 mb-2 text-gray-800"><?= $title; ?></h1>
 
 <!-- DataTales Example -->
-<div class="row card shadow mb-4">
+<div class="row card shadow mb-4 list-job">
     <div class="card-header py-3">
         <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addjob">Tambahkan Pekerjaan</a>
     </div>
@@ -36,7 +36,7 @@
                                     <td>Dikerjakan</td>
                                 <?php endif; ?>
                                 <td>
-                                    <a type="button" class="badge badge-primary" data-toggle="modal" data-target="#editmodal<?= $sm['id_job']; ?>">edit</a>
+                                    <a type="button" class="badge badge-primary editModal" data-toggle="modal" data-target="#editmodal<?= $sm['id_job']; ?>">edit</a>
                                     <a href="<?= base_url('User/deljob'); ?>/<?= $sm['id_job']; ?>" class="badge badge-danger">delete</a>
                                 </td>
                             </tr>
@@ -75,8 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label>Assign Ke</label>
-                        <select name="employee" class="form-control">
-                            <option></option>
+                        <select name="employee[]" multiple="multiple" class="form-contro select-js-select2" style="width: 100%">
                             <?php foreach ($userList as $ul) : ?>
                                 <option value="<?php echo $ul['nip'] ?>"><?php echo $ul['name'] ?></option>
                             <?php endforeach; ?>
@@ -96,7 +95,7 @@
 
 <!-- Edit Modal -->
 <?php foreach ($inputjob as $sm) : ?>
-    <div class="modal fade" id="editmodal<?= $sm['id_job']; ?>" tabindex="-1" role="dialog" aria-labelledby="editmodalLabel" aria-hidden="true">
+    <div class="modal fade editmodal" data-url="<?= base_url('User/getUserJob') ?>" data-id="<?= $sm['id_job']; ?>" id="editmodal<?= $sm['id_job']; ?>" tabindex="-1" role="dialog" aria-labelledby="editmodalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -122,7 +121,7 @@
                         </div>
                         <div class="form-group">
                             <label>Assign Ke</label>
-                            <select name="employee" class="form-control">
+                            <select name="employee[]" multiple="multiple" class="form-contro select-js-select2" style="width: 100%">
                                 <option></option>
                                 <?php foreach ($userList as $ul) : ?>
                                     <option value="<?php echo $ul['nip'] ?>" <?php echo $sm['employe'] == $ul['nip'] ? 'selected' : '' ?>><?php echo $ul['name'] ?></option>
@@ -139,3 +138,34 @@
         </div>
     </div>
 <?php endforeach; ?>
+
+
+<!--<script>-->
+<!--    function getId(id){-->
+<!--        var modal = $('#page-top').find('.list-job');-->
+<!--       $('.editmodal').on('show.bs.modal', function(event) {-->
+<!--           var _this = $(this);-->
+<!--           $.ajax({-->
+<!--               url: _this.data('url')-->
+<!--               method: "POST",-->
+<!--               data: function(params) {-->
+<!--                   var country = _this.closest('.js-sensor-cleaning-form').find('.js-cleaning-country-select').val();-->
+<!--                   return {-->
+<!--                       q: params.term,-->
+<!--                       country: country-->
+<!--                   };-->
+<!--               }-->
+<!--               success: function( response ) {-->
+<!--                  return {-->
+<!--                      results: response.data-->
+<!--                  }-->
+<!--               },-->
+<!--               // error: function(error) {-->
+<!--               //     console.log(error);-->
+<!--               //     //alert(error);-->
+<!--               // }-->
+<!--           });-->
+<!--           alert(_this)-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->

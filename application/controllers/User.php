@@ -120,7 +120,10 @@ class User extends CI_Controller
         $this->form_validation->set_rules('job', 'Job', 'required');
         $this->form_validation->set_rules('_deadline', 'Deadline', 'required');
         $this->form_validation->set_rules('info', 'Info', 'required');
-        $data['userList'] = $this->datatable->user();
+        $data['userList'] = $this->datatable->getUserWithRole(1);
+
+//        var_dump($this->input->post('employee'));
+
 
         if ($this->form_validation->run() == false) {
             $data['inputjob'] = $this->datatable->jobavailable();
@@ -138,9 +141,22 @@ class User extends CI_Controller
                 'deadline' => $this->input->post('_deadline'),
                 'info' => $this->input->post('info'),
                 'nip' => $data['user']['nip'],
-                'employe' => $this->input->post('employee')
+//                'employe' => $this->input->post('employee')
             ];
             $this->db->insert('tbl_job_available', $data);
+            $insert_id = $this->db->insert_id();
+
+            $employees = $this->input->post('employee');
+            var_dump($employees);
+
+            foreach($employees as $emp){
+                $datas = [
+                    'user_id' => $emp,
+                    'job_available_id' => $insert_id
+                ];
+                $this->db->insert('tbl_user_jobAvailable', $datas);
+            }
+
             redirect('User/inputjob');
         }
     }
@@ -166,7 +182,7 @@ class User extends CI_Controller
                 'deadline' => $this->input->post('__deadline'),
                 'info' => $this->input->post('info'),
                 'nip' => $data['user']['nip'],
-                'employe' => $this->input->post('employee')
+//                'employe' => $this->input->post('employee')
             ];
             $this->datatable->updatejob($id, $data);
             redirect('User/inputjob');
@@ -205,5 +221,11 @@ class User extends CI_Controller
         $this->db->where('nip', $nip);
         $this->db->update('tbl_user');
         redirect('User/mystaff');
+    }
+
+    public function getUserJob(){
+        $jobId = $this->input->job_id;
+        $data['user_job'] = $this->datatable->getUserJobAvaliable($jobId);
+        return $data;
     }
 }

@@ -43,6 +43,15 @@ class datatable extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function getUserWithRole($role)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_user');
+        $this->db->join('tbl_user_role', 'tbl_user.role_id = tbl_user_role.id');
+        $this->db->where('role_id !=',1);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
     public function userrole()
     {
         $this->db->select('*');
@@ -72,4 +81,12 @@ class datatable extends CI_Model
 //    public function getDeadlineJobByUser(){
 //        $this->db->where()
 //    }
+    public function getUserJobAvaliable($id){
+        $this->db->select('*');
+        $this->db->from('tbl_user_jobAvailable');
+        $this->db->where('job_available_id', $id);
+        $query = $this->db->get();
+
+        return $query;
+    }
 }
